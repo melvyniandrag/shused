@@ -9,27 +9,44 @@ import androidx.activity.OnBackPressedCallback
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoestoreinventory.databinding.FragmentShoeListBinding
+import com.example.shoestoreinventory.models.Shoe
+import com.example.shoestoreinventory.viewmodels.ShoeListViewModel
 
 
 class ShoeListFragment : Fragment() {
+
+    private lateinit var binding : FragmentShoeListBinding
+    private lateinit var viewModel : ShoeListViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentShoeListBinding>(
+        binding = DataBindingUtil.inflate<FragmentShoeListBinding>(
             inflater, R.layout.fragment_shoe_list, container, false)
+
+        viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
+
+        // from documentation: if livedata already has data set, it will be sent to the observer.
+        // weird! I thought the observe was just for events.
+        viewModel.shoes.observe(viewLifecycleOwner, Observer {
+            for( shoe in it ){
+               addShoeView(shoe)
+            }
+        })
 
         (activity as AppCompatActivity).supportActionBar?.show()
         //(activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         setHasOptionsMenu(true)
-
-
 
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToNewShoeFragment())
@@ -46,7 +63,23 @@ class ShoeListFragment : Fragment() {
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+
+
         return binding.root
+    }
+
+    private fun addShoeView(shoe: Shoe){
+        val parentLayout = binding.shoeListLinearLayout
+        val shoeListLayout = layoutInflater.inflate(R.layout.list_view_item, parentLayout, false)
+        val name = shoeListLayout.findViewById<TextView>(R.id.list_view_item_name)
+        name.text = shoe.name
+        val brand = shoeListLayout.findViewById<TextView>(R.id.list_view_item_brand)
+        brand.text = shoe.brand
+        val shoeSize = shoeListLayout.findViewById<TextView>(R.id.list_view_item_size)
+        shoeSize.text = shoe.size
+        val shoeDescription = shoeListLayout.findViewById<TextView>(R.id.list_view_item_description)
+        shoeDescription.text = shoe.description
+        binding.shoeListLinearLayout.addView(shoeListLayout)
     }
 
 
