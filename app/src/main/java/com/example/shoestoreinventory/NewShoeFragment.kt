@@ -20,9 +20,8 @@ class NewShoeFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        (activity as AppCompatActivity).supportActionBar?.hide()
 
-        viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(activity as AppCompatActivity).get(ShoeListViewModel::class.java)
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_new_shoe, container, false)

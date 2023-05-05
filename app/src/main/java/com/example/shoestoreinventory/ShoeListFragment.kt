@@ -1,5 +1,7 @@
 package com.example.shoestoreinventory
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 
 import android.view.*
@@ -33,7 +35,7 @@ class ShoeListFragment : Fragment() {
         binding = DataBindingUtil.inflate<FragmentShoeListBinding>(
             inflater, R.layout.fragment_shoe_list, container, false)
 
-        viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(activity as AppCompatActivity).get(ShoeListViewModel::class.java)
 
         // from documentation: if livedata already has data set, it will be sent to the observer.
         // weird! I thought the observe was just for events.
@@ -43,14 +45,14 @@ class ShoeListFragment : Fragment() {
             }
         })
 
-        (activity as AppCompatActivity).supportActionBar?.show()
-        //(activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
-        setHasOptionsMenu(true)
-
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToNewShoeFragment())
         }
+
+        (activity as AppCompatActivity).supportActionBar!!.show()
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
+
 
         // https://developer.android.com/guide/navigation/navigation-custom-back
         val callback: OnBackPressedCallback =
@@ -61,12 +63,14 @@ class ShoeListFragment : Fragment() {
                     Toast.makeText(requireActivity(), "Cannot go back to onboarding from shoelistfragment.", Toast.LENGTH_SHORT).show()
                 }
             }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        (activity as AppCompatActivity).onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        setHasOptionsMenu(true)
 
 
         return binding.root
     }
+
 
     private fun addShoeView(shoe: Shoe){
         val parentLayout = binding.shoeListLinearLayout
@@ -82,6 +86,11 @@ class ShoeListFragment : Fragment() {
         binding.shoeListLinearLayout.addView(shoeListLayout)
     }
 
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
