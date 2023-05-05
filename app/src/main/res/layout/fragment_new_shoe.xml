@@ -5,6 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.NewShoeFragment">
 
+    <data>
+        <variable
+            type="com.example.shoestoreinventory.models.Shoe"
+            name="myNewShoe"/>
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -44,7 +51,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@{myNewShoe.name}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_name_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -72,7 +79,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/brand"
+            android:text="@{myNewShoe.brand}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_brand_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -100,7 +107,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/size"
+            android:text="@{myNewShoe.size}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_size_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -128,7 +135,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/description"
+            android:text="@{myNewShoe.description}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_description_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

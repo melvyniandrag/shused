@@ -29,6 +29,23 @@ class ShoeListFragment : Fragment() {
     private lateinit var binding : FragmentShoeListBinding
     private lateinit var viewModel : ShoeListViewModel
 
+    override fun onStart() {
+        super.onStart()
+        (activity as AppCompatActivity).supportActionBar!!.show()
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        //Log.d("onStart", "onAttach: CREATE ME")
+        // https://developer.android.com/guide/navigation/navigation-custom-back
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true ) {
+                override fun handleOnBackPressed() {
+                    // do nothing.
+                    // See point #15 in the homework assignment.
+                    Toast.makeText(requireActivity(), "Cannot go back to onboarding from shoelistfragment.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        (activity as AppCompatActivity).onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -49,21 +66,12 @@ class ShoeListFragment : Fragment() {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToNewShoeFragment())
         }
 
-        (activity as AppCompatActivity).supportActionBar!!.show()
-        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        //(activity as AppCompatActivity).supportActionBar!!.show()
+        //(activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
 
 
-        // https://developer.android.com/guide/navigation/navigation-custom-back
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true ) {
-                override fun handleOnBackPressed() {
-                    // do nothing.
-                    // See point #15 in the homework assignment.
-                    Toast.makeText(requireActivity(), "Cannot go back to onboarding from shoelistfragment.", Toast.LENGTH_SHORT).show()
-                }
-            }
-        (activity as AppCompatActivity).onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
 
         setHasOptionsMenu(true)
 

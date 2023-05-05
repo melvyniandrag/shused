@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:src="@android:drawable/btn_plus"
+            android:src="@drawable/shoe_svgrepo_com"
             android:contentDescription="@string/navigate_to_shoe_detail"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"

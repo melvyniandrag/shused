@@ -17,6 +17,7 @@ import com.example.shoestoreinventory.viewmodels.ShoeListViewModel
 class NewShoeFragment : Fragment(){
     private lateinit var viewModel : ShoeListViewModel
     private lateinit var binding : FragmentNewShoeBinding
+    private lateinit var shoe : Shoe
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,17 +27,20 @@ class NewShoeFragment : Fragment(){
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_new_shoe, container, false)
 
+        shoe = Shoe("name", "brand", "size", "description")
+        binding.myNewShoe = shoe
+
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(NewShoeFragmentDirections.actionNewShoeFragmentToShoeListFragment())
         }
 
         binding.saveButton.setOnClickListener {
-            // update the view model
-            val shoe = Shoe(
-                name=binding.shoeNameEntry.text.toString(),
-                brand = binding.shoeBrandEntry.text.toString(),
-                size=binding.shoeSizeEntry.text.toString(),
-                description = binding.shoeDescriptionEntry.text.toString())
+            binding.apply{
+                myNewShoe?.name = shoeNameEntry.text.toString()
+                myNewShoe?.brand = shoeBrandEntry.text.toString()
+                myNewShoe?.size  = shoeSizeEntry.text.toString()
+                myNewShoe?.description = shoeDescriptionEntry.text.toString()
+            }
             viewModel.addShoe(shoe)
             findNavController().navigate(NewShoeFragmentDirections.actionNewShoeFragmentToShoeListFragment())
         }
