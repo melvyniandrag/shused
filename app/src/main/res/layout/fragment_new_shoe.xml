@@ -7,8 +7,11 @@
 
     <data>
         <variable
-            type="com.example.shoestoreinventory.models.Shoe"
-            name="myNewShoe"/>
+            type="com.example.shoestoreinventory.viewmodels.ShoeViewModel"
+            name="shoeViewModel"/>
+        <variable
+            type="com.example.shoestoreinventory.viewmodels.ShoeListViewModel"
+            name="shoeListViewModel"/>
     </data>
 
 
@@ -53,7 +56,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{myNewShoe.name}"
+            android:text="@={shoeViewModel.name}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_name_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -81,7 +84,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{myNewShoe.brand}"
+            android:text="@={shoeViewModel.brand}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_brand_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -109,7 +112,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{myNewShoe.size}"
+            android:text="@={shoeViewModel.size}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_size_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -137,7 +140,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{myNewShoe.description}"
+            android:text="@={shoeViewModel.description}"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_description_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

@@ -5,6 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.NewShoeFragment">
 
+
+    <data>
+        <variable
+            type="com.example.shoestoreinventory.viewmodels.ShoeViewModel"
+            name="shoeViewModel"/>
+        <variable
+            type="com.example.shoestoreinventory.viewmodels.ShoeListViewModel"
+            name="shoeListViewModel"/>
+    </data>
+
     <!-- on some small screens all the stuff might not fit. Use a scroll view.-->
     <ScrollView
         android:layout_width="match_parent"
@@ -50,7 +60,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="@={shoeViewModel.name}"
                 app:layout_constraintBottom_toBottomOf="@+id/shoe_name_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -78,7 +88,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/brand"
+                android:text="@={shoeViewModel.brand}"
                 app:layout_constraintBottom_toBottomOf="@+id/shoe_brand_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -106,7 +116,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/size"
+                android:text="@={shoeViewModel.size}"
                 app:layout_constraintBottom_toBottomOf="@+id/shoe_size_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -134,7 +144,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/description"
+                android:text="@={shoeViewModel.description}"
                 app:layout_constraintBottom_toBottomOf="@+id/shoe_description_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

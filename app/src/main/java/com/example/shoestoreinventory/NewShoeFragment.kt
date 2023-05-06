@@ -13,9 +13,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.shoestoreinventory.databinding.FragmentNewShoeBinding
 import com.example.shoestoreinventory.models.Shoe
 import com.example.shoestoreinventory.viewmodels.ShoeListViewModel
+import com.example.shoestoreinventory.viewmodels.ShoeViewModel
 
 class NewShoeFragment : Fragment(){
     private lateinit var viewModel : ShoeListViewModel
+    private lateinit var  shoeViewModel : ShoeViewModel
     private lateinit var binding : FragmentNewShoeBinding
     private lateinit var shoe : Shoe
 
@@ -23,25 +25,19 @@ class NewShoeFragment : Fragment(){
                               savedInstanceState: Bundle?): View? {
 
         viewModel = ViewModelProvider(activity as AppCompatActivity).get(ShoeListViewModel::class.java)
+        shoeViewModel = ViewModelProvider(activity as AppCompatActivity).get(ShoeViewModel::class.java)
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_new_shoe, container, false)
 
-        shoe = Shoe("name", "brand", "size", "description")
-        binding.myNewShoe = shoe
+        binding.shoeViewModel = shoeViewModel
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(NewShoeFragmentDirections.actionNewShoeFragmentToShoeListFragment())
         }
 
         binding.saveButton.setOnClickListener {
-            binding.apply{
-                myNewShoe?.name = shoeNameEntry.text.toString()
-                myNewShoe?.brand = shoeBrandEntry.text.toString()
-                myNewShoe?.size  = shoeSizeEntry.text.toString()
-                myNewShoe?.description = shoeDescriptionEntry.text.toString()
-            }
-            viewModel.addShoe(shoe)
+            viewModel.addShoe(shoeViewModel.getShoe())
             findNavController().navigate(NewShoeFragmentDirections.actionNewShoeFragmentToShoeListFragment())
         }
 
