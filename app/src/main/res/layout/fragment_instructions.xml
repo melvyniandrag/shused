@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.InstructionsFragment">
 
+    <!-- A relatively simple layout. A list of things to show one on top of another.
+    LinearLayout is a good choice for this.
+    Layout will need to be different for landscape. See landscape layout for that implementation. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,9 +33,10 @@
             android:id="@+id/instructions_frag_text_001"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="0.5"
-            android:text="@string/instructions_text_001"
             android:gravity="center"
+            android:text="@string/instructions_text_001"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -49,9 +53,10 @@
             android:id="@+id/instructions_frag_text_002"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/instructions_text_002"
             android:gravity="center"
+            android:text="@string/instructions_text_002"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -59,16 +64,18 @@
             android:id="@+id/instructions_frag_text_003"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/instructions_text_003"
             android:gravity="center"
+            android:text="@string/instructions_text_003"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/instructions_next_button"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="80dp"
+            android:layout_gravity="center"
             android:text="@string/next" />
 
     </LinearLayout>

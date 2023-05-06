@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.LoginFragment">
 
+        <!-- a few components need to be laid out. A LinearLayout is not a great choice because I
+        want to put a background. I use a constraint layout so I can have the background span the whole page and then
+         put my other views on top of it and arrange them with constraints. -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

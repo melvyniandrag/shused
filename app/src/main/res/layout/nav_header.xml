@@ -3,4 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+        <!-- actually I dont need this. Thinking to use it, but not yet. Might add later -->
 </androidx.constraintlayout.widget.ConstraintLayout>

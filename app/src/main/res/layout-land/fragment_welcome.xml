@@ -5,72 +5,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.WelcomeFragment">
 
-    <LinearLayout
+    <!-- complicated layout in landscape. Cant use linearLayout
+    Very hard to get the image lined up right in this constraint layout!
+    On https://stackoverflow.com/questions/52583042/how-to-set-image-width-to-take-half-the-space-in-constraintlayout
+    StackOverflow I found out about constraintWidth_default="percent"-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
+
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerInside"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.4"
             app:srcCompat="@drawable/bikeshoesquare" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/welcome_frag_text_002"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
+            android:gravity="center"
+            android:text="@string/welcome_text_002"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_frag_text_003"
+            app:layout_constraintEnd_toEndOf="@+id/welcome_frag_text_001"
+            app:layout_constraintStart_toStartOf="@+id/welcome_frag_text_001"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_frag_text_001"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <TextView
-                android:id="@+id/welcome_frag_text_001"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/aclonica"
-                android:text="@string/welcome_text_001"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="34sp" />
+        <TextView
+            android:id="@+id/welcome_frag_text_001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="@string/welcome_text_001"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_frag_text_002"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <TextView
-                android:id="@+id/welcome_frag_text_002"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/welcome_text_002"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+        <Button
+            android:id="@+id/welcome_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_frag_text_003"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <TextView
-                android:id="@+id/welcome_frag_text_003"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/welcome_text_003"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+        <TextView
+            android:id="@+id/welcome_frag_text_003"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/welcome_text_003"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_next_button"
+            app:layout_constraintEnd_toEndOf="@+id/welcome_frag_text_002"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/welcome_frag_text_002"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_frag_text_002"
+            app:layout_constraintVertical_bias="0.5" />
 
-            <Button
-                android:id="@+id/welcome_next_button"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="Next" />
-        </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

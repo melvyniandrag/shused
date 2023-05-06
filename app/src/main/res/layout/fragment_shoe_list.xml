@@ -5,35 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.ShoeListFragment">
 
-    <RelativeLayout
+    <!-- need a coordinator layout to allow the FAB to float on top of the list -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <!-- the items themselves will make a simple list, so use a LinearLayout -->
+        <LinearLayout
+            android:id="@+id/shoe_list_linear_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/shoe_list_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-        </ScrollView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addShoeButton"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:src="@drawable/shoe_svgrepo_com"
-            android:contentDescription="@string/navigate_to_shoe_detail"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="16dp" />
-    </RelativeLayout>
+            android:orientation="vertical">
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addShoeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/shoe_svgrepo_com"
+        android:contentDescription="@string/navigate_to_shoe_detail"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:elevation="30dp"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </layout>

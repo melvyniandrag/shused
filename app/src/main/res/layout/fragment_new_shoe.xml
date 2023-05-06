@@ -12,6 +12,8 @@
     </data>
 
 
+    <!--
+    This page is not a simple stack of items. Use a constraintlayout. -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

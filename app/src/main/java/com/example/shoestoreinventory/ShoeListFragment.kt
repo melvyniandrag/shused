@@ -66,15 +66,7 @@ class ShoeListFragment : Fragment() {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToNewShoeFragment())
         }
 
-        //(activity as AppCompatActivity).supportActionBar!!.show()
-        //(activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-
-
-
-
-
         setHasOptionsMenu(true)
-
 
         return binding.root
     }

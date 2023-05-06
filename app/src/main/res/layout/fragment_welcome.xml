@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.WelcomeFragment">
 
+    <!-- Just like the fragment_instructions, this is just a stack of items. LinearLayout. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,31 +36,34 @@
             android:scaleType="centerInside"
             app:srcCompat="@drawable/bikeshoesquare" />
 
-            <TextView
-                android:id="@+id/welcome_frag_text_002"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/welcome_text_002"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+        <TextView
+            android:id="@+id/welcome_frag_text_002"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/welcome_text_002"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/welcome_frag_text_003"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/welcome_text_003"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+        <TextView
+            android:id="@+id/welcome_frag_text_003"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/welcome_text_003"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/welcome_next_button"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="@string/next" />
+        <Button
+            android:id="@+id/welcome_next_button"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:text="@string/next" />
 
     </LinearLayout>
 

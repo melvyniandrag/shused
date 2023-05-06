@@ -5,9 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shoestoreinventory.NewShoeFragment">
 
+    <!-- on some small screens all the stuff might not fit. Use a scroll view.-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <!-- complicated layout. Use constraintlayout-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
